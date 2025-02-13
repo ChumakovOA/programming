@@ -1,0 +1,110 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/ChumakovOA/programming/blob/main/task_01_01\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Задание task_01_01.\n",
+        "\"\"\" Составьте программу, которая запрашивает у пользователя 2 целых числа и выполняет операции:\n",
+        "•\tарифметические: +, -, * , / , // , %, **;\n",
+        "•\tсравнение: <, <=, >, >=, !=, ==,\n",
+        "выводя на экран результат каждого действия. В случае получение вещественного результата, округлите его до 2-х знаков после запятой (используя функцию round()).\n",
+        "\"\"\"\n",
+        "# Выполнил: Чумаков О.А.\n",
+        "# Группа: ЦИБ-241\n",
+        "\n",
+        "\n",
+        "a = int(input(\"a=\"))\n",
+        "b = int(input(\"b=\"))\n",
+        "\n",
+        "print(a + b)\n",
+        "print(a - b)\n",
+        "print(a * b)\n",
+        "print(round(a / b, 2))\n",
+        "print(a // b)\n",
+        "print(a % b)\n",
+        "print(a ** 3)\n",
+        "\n",
+        "\n",
+        "print(a < b)\n",
+        "print(a <= b)\n",
+        "print(a > b)\n",
+        "print(a >= b)\n",
+        "print(a != b)\n",
+        "print(a ==3 b)\n",
+        "\n",
+        "\n",
+        "# --------------\n",
+        "# Пример вывода:\n",
+        "#\n",
+        "# a=2\n",
+        "# b=3\n",
+        "# 5\n",
+        "# -1\n",
+        "# 6\n",
+        "# 0.67\n",
+        "# 0\n",
+        "# 2\n",
+        "# 8\n",
+        "# True\n",
+        "# True\n",
+        "# False\n",
+        "# False\n",
+        "# True\n",
+        "# False"
+      ],
+      "metadata": {
+        "id": "jcwuGUFeoFDD",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "879c1322-1c41-4039-cb07-773f07bbc28d"
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "a=2\n",
+            "b=3\n",
+            "5\n",
+            "-1\n",
+            "6\n",
+            "0.67\n",
+            "0\n",
+            "2\n",
+            "8\n",
+            "True\n",
+            "True\n",
+            "False\n",
+            "False\n",
+            "True\n",
+            "False\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,94 @@
+USE mgpu_ico_db_20;
+CREATE TABLE departments (
+    department_id   INTEGER NOT NULL,
+    department_name VARCHAR(50) NOT NULL
+);
+
+ALTER TABLE departments ADD CONSTRAINT departments_pk PRIMARY KEY ( department_id );
+
+CREATE TABLE support_staff (
+    support_staff_id INTEGER NOT NULL,
+    name             VARCHAR(20) NOT NULL,
+    surname          VARCHAR(30) NOT NULL,
+    email            VARCHAR(100) NOT NULL
+);
+
+ALTER TABLE support_staff ADD CONSTRAINT support_staff_pk PRIMARY KEY ( support_staff_id );
+
+CREATE TABLE ticket_comments (
+    comment_id        INTEGER NOT NULL,
+    ticket_id         INTEGER NOT NULL,
+    support_staff_id  INTEGER NOT NULL,
+    comment_text      VARCHAR(500) NOT NULL,
+    tickets_ticket_id INTEGER NOT NULL
+);
+
+ALTER TABLE ticket_comments ADD CONSTRAINT ticket_comments_pk PRIMARY KEY ( comment_id );
+
+CREATE TABLE ticket_priority (
+    ticket_priority_id INTEGER NOT NULL,
+    tickert_priority   VARCHAR(50) NOT NULL
+);
+
+ALTER TABLE ticket_priority ADD CONSTRAINT ticket_priority_pk PRIMARY KEY ( ticket_priority_id );
+
+CREATE TABLE ticket_status (
+    status_id INTEGER NOT NULL,
+    status    VARCHAR(30) NOT NULL
+);
+
+ALTER TABLE ticket_status ADD CONSTRAINT ticket_status_pk PRIMARY KEY ( status_id );
+
+CREATE TABLE tickets (
+    ticket_id                          INTEGER NOT NULL,
+    user_id                            INTEGER NOT NULL,
+    support_staff_id                   INTEGER NOT NULL,
+    comment_id                         INTEGER NOT NULL,
+    ticket_priority_id                 INTEGER NOT NULL,
+    ticket_subject                     VARCHAR(100) NOT NULL,
+    ticket_description                 VARCHAR(200) NOT NULL,
+    start_date                         DATE NOT NULL,
+    ticket_status_status_id            INTEGER NOT NULL,
+    support_staff_support_staff_id     INTEGER NOT NULL,
+    users_user_id                      INTEGER NOT NULL, 
+--  ERROR: Column name length exceeds maximum allowed length(30) 
+    ticket_priority_ticket_priority_id INTEGER NOT NULL
+);
+
+ALTER TABLE tickets ADD CONSTRAINT tickets_pk PRIMARY KEY ( ticket_id );
+
+CREATE TABLE users (
+    user_id                   INTEGER NOT NULL,
+    department_id             INTEGER NOT NULL,
+    name                      VARCHAR(30) NOT NULL,
+    surname                   VARCHAR(50) NOT NULL,
+    email                     VARCHAR(100) NOT NULL,
+    departments_department_id INTEGER NOT NULL
+);
+
+ALTER TABLE users ADD CONSTRAINT users_pk PRIMARY KEY ( user_id );
+
+ALTER TABLE ticket_comments
+    ADD CONSTRAINT ticket_comments_tickets_fk FOREIGN KEY ( tickets_ticket_id )
+        REFERENCES tickets ( ticket_id );
+
+ALTER TABLE tickets
+    ADD CONSTRAINT tickets_support_staff_fk FOREIGN KEY ( support_staff_support_staff_id )
+        REFERENCES support_staff ( support_staff_id );
+
+ALTER TABLE tickets
+    ADD CONSTRAINT tickets_ticket_priority_fk FOREIGN KEY ( ticket_priority_ticket_priority_id )
+        REFERENCES ticket_priority ( ticket_priority_id );
+
+ALTER TABLE tickets
+    ADD CONSTRAINT tickets_ticket_status_fk FOREIGN KEY ( ticket_status_status_id )
+        REFERENCES ticket_status ( status_id );
+
+ALTER TABLE tickets
+    ADD CONSTRAINT tickets_users_fk FOREIGN KEY ( users_user_id )
+        REFERENCES users ( user_id );
+
+ALTER TABLE users
+    ADD CONSTRAINT users_departments_fk FOREIGN KEY ( departments_department_id )
+        REFERENCES departments ( department_id );
+           
